@@ -145,7 +145,7 @@ def manage_user_list_page():
         # If a checkbox is checked, this loop iteration will re-run.
         if st.checkbox(item, key=checkbox_key):
              # If the item is still in the original list (safety check)
-            if item in user_data['my_list']:a
+            if item in user_data['my_list']:
                 user_data['my_list'].remove(item)  # Remove item from the actual list
                 st.session_state.accounts = accounts  # Update session state
                 save_accounts(st.session_state.accounts)  # Save changes to file
