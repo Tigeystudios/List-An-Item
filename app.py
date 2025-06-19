@@ -134,27 +134,27 @@ def manage_user_list_page():
 
         # We need a temporary list to build what will be the new my_list
         # This prevents modifying the list while iterating over it, which can cause issues.
-        updated_list_after_removal = []
-        item_removed_this_cycle = False  # Flag to know if any item was removed in this run
+    updated_list_after_removal = []
+    item_removed_this_cycle = False  # Flag to know if any item was removed in this run
 
-        # Iterate over a copy to safely check checkboxes
-        for idx, item in enumerate(my_list_current):
-            checkbox_key = f"remove_item_{idx}_{item}"
+    # Iterate over a copy to safely check checkboxes
+    for idx, item in enumerate(my_list_current):
+        checkbox_key = f"remove_item_{idx}_{item}"
 
-            # Check if the checkbox for this item is currently checked
-            # If a checkbox is checked, this loop iteration will re-run.
-            if st.checkbox(item, key=checkbox_key):
-                # If the item is still in the original list (safety check)
-                if item in user_data['my_list']:a
-                    user_data['my_list'].remove(item)  # Remove item from the actual list
-                    st.session_state.accounts = accounts  # Update session state
-                    save_accounts(st.session_state.accounts)  # Save changes to file
-                    item_removed_this_cycle = True
-                    st.rerun()  # Rerun immediately to show the list without the removed item
+        # Check if the checkbox for this item is currently checked
+        # If a checkbox is checked, this loop iteration will re-run.
+        if st.checkbox(item, key=checkbox_key):
+             # If the item is still in the original list (safety check)
+            if item in user_data['my_list']:a
+                user_data['my_list'].remove(item)  # Remove item from the actual list
+                st.session_state.accounts = accounts  # Update session state
+                save_accounts(st.session_state.accounts)  # Save changes to file
+                item_removed_this_cycle = True
+                st.rerun()  # Rerun immediately to show the list without the removed item
                     # The script execution stops here and restarts, so the item will be gone on the next render.
-            else:
+        else:
                 # If the checkbox is not checked, keep the item in the list
-                updated_list_after_removal.append(item)
+            updated_list_after_removal.append(item)
 
         # If an item was just removed and we rerun, this part won't be reached in the same cycle.
         # It's here for completeness if a different removal strategy without immediate rerun was used.
