@@ -226,7 +226,7 @@ def main_app():
         st.sidebar.write(f"Logged in as: **{st.session_state.logged_in_user}**")
         manage_user_list_page()
     elif st.session_state.page == "home":
-        st.write("Please Select What You Would Like To Do!")
+        st.write("Please Click The Arrow On the Top-Left Of Your Screen And Press An Action To Get Started!")
         if st.sidebar.button("Register New Account", key="home_register"):
             st.session_state.page = "register"
             st.rerun()
