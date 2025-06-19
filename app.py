@@ -132,9 +132,6 @@ def manage_user_list_page():
 
     st.write("### Your Current List:")
 
-    if my_list_current:
-        st.write("Check an item to immediately remove it with an animation:")
-
         # We need a temporary list to build what will be the new my_list
         # This prevents modifying the list while iterating over it, which can cause issues.
         updated_list_after_removal = []
@@ -148,14 +145,7 @@ def manage_user_list_page():
             # If a checkbox is checked, this loop iteration will re-run.
             if st.checkbox(item, key=checkbox_key):
                 # If the item is still in the original list (safety check)
-                if item in user_data['my_list']:
-                    # Display a temporary message for the "animation" effect
-                    st.info(f"'{item}' is getting deleted...")
-                    time.sleep(0.5)
-                    st.info(f"DONE! '{item}' is deleted!")
-
-                    time.sleep(0.5)  # Pause for half a second for the "animation"
-
+                if item in user_data['my_list']:a
                     user_data['my_list'].remove(item)  # Remove item from the actual list
                     st.session_state.accounts = accounts  # Update session state
                     save_accounts(st.session_state.accounts)  # Save changes to file
