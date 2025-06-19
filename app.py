@@ -228,7 +228,7 @@ def main_app():
     elif st.session_state.page == "home":
         st.write("Please Click The Arrow On the Top-Left Of Your Screen And Press An Action To Get Started!")
         
-        st.html('''<a href="mailto:tigeyonline@gmail.com">Click Here To Email Me!<\a>''')
+        st.html('''<a href="mailto:tigeyonline@gmail.com">Click Here To Email Me!</a>''')
         
         if st.sidebar.button("Register New Account", key="home_register"):
             st.session_state.page = "register"
